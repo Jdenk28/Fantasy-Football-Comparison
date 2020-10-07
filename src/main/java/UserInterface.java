@@ -16,6 +16,8 @@ public class UserInterface {
         this.comparePlayers = new ArrayList<>();
     }
     
+    //Main ui that the user will interface with
+    
     public void start() {
         readFile("proj_cbs");
         readFile("proj_nfl");
@@ -27,13 +29,13 @@ public class UserInterface {
         
         while (true) {
             System.out.print("Enter Player (Full name): ");
-            String input = scan.nextLine();
+            String input = scan.nextLine().toLowerCase();
             
-            if (input.equals("End")) {
+            if (input.equals("end")) {
                 break;
             }
 
-            if (input.equals("Search")) {
+            if (input.equals("search")) {
                 search();
                 continue;
             }
@@ -89,7 +91,7 @@ public class UserInterface {
 
             int j = 0;
             while (j < this.players.size()) {
-                if (this.players.get(j).getName().equals(firstName + " " + lastName)) {
+                if (this.players.get(j).getNameCaps().equals(firstName + " " + lastName)) {
                     this.players.get(j).addProj(projection);
                 }
                 j++;
@@ -99,40 +101,44 @@ public class UserInterface {
         this.list.clear();
     }
     
+    //Code for the search function
+    
     public void search() {
         System.out.print("Search by Position or Team: ");
-        String input = this.scan.nextLine();
+        String input = this.scan.nextLine().toLowerCase();
         
-        if (input.equals("Position")) {
+        if (input.equals("position")) {
             System.out.print("Which position? (QB, RB, WR, TE, K, DEF): ");
-            String inputPos = this.scan.nextLine();
+            String inputPos = this.scan.nextLine().toLowerCase();
             System.out.println("");
             
             int i = 0;
             while (i < this.players.size()) {
                 if (this.players.get(i).getPos().equals(inputPos)) {
-                    System.out.println(this.players.get(i).getName());
+                    System.out.println(this.players.get(i).getNameCaps());
                 }
                 i++;
             }
             System.out.println("");
         }
         
-        if(input.equals("Team")) {
+        if(input.equals("team")) {
             System.out.print("Which team? (PIT, PHI, KC, NE, etc): ");
-            String inputTeam = this.scan.nextLine();
+            String inputTeam = this.scan.nextLine().toLowerCase();
             System.out.println("");
             
             int i = 0;
             while (i < this.players.size()) {
                 if (this.players.get(i).getTeam().equals(inputTeam)) {
-                    System.out.println(this.players.get(i).getName());
+                    System.out.println(this.players.get(i).getNameCaps());
                 }
                 i++;
             }
             System.out.println("");
         }
     }
+    
+    //Loops through entered players to find who has the highest average projection
     
     public void highestAvg() {
         System.out.println("");
@@ -151,6 +157,6 @@ public class UserInterface {
             i++;
         }
         System.out.println("");
-        System.out.println(highestAvgPlayer.getName() + " has the highest average projection with " + highestAvg + " points.");
+        System.out.println(highestAvgPlayer.getNameCaps() + " has the highest average projection with " + highestAvg + " points.");
     }
 }
