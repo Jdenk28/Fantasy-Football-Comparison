@@ -41,14 +41,11 @@ public class UserInterface {
             }
             
             String notOnList = "notOnList";
-
-            int i = 0;
-            while (i < this.players.size()) {
-                if (this.players.get(i).getName().equals(input)) {
-                    this.comparePlayers.add(this.players.get(i));
-                    notOnList = this.players.get(i).getName();
+            for (Player player: this.players) {
+                if (player.getName().equals(input)) {
+                    this.comparePlayers.add(player);
+                    notOnList = player.getName();
                 }
-                i++;
             }
             
             if (notOnList.equals("notOnList")) {
@@ -65,10 +62,10 @@ public class UserInterface {
         try (Scanner scanner = new Scanner(Paths.get(file))) {
             
             while (scanner.hasNextLine()) {
-                
                 String line = scanner.nextLine();
                 this.list.add(line);
             }
+            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         } 
@@ -88,16 +85,16 @@ public class UserInterface {
             if (!this.players.contains(newPlayer)) {
                 this.players.add(newPlayer);
             }
-
-            int j = 0;
-            while (j < this.players.size()) {
-                if (this.players.get(j).getNameCaps().equals(firstName + " " + lastName)) {
-                    this.players.get(j).addProj(projection);
+            
+            for (Player player: this.players) {
+                if (player.getNameCaps().equals(firstName + " " + lastName)) {
+                    player.addProj(projection);
                 }
-                j++;
             }
+            
             i++;
         }
+        
         this.list.clear();
     }
     
@@ -112,13 +109,12 @@ public class UserInterface {
             String inputPos = this.scan.nextLine().toLowerCase();
             System.out.println("");
             
-            int i = 0;
-            while (i < this.players.size()) {
-                if (this.players.get(i).getPos().equals(inputPos)) {
-                    System.out.println(this.players.get(i).getNameCaps());
+            for (Player player: this.players) {
+                if (player.getPos().equals(inputPos)) {
+                    System.out.println(player.getNameCaps());
                 }
-                i++;
             }
+            
             System.out.println("");
         }
         
@@ -127,13 +123,12 @@ public class UserInterface {
             String inputTeam = this.scan.nextLine().toLowerCase();
             System.out.println("");
             
-            int i = 0;
-            while (i < this.players.size()) {
-                if (this.players.get(i).getTeam().equals(inputTeam)) {
-                    System.out.println(this.players.get(i).getNameCaps());
+            for (Player player: this.players) {
+                if (player.getTeam().equals(inputTeam)) {
+                    System.out.println(player.getNameCaps());
                 }
-                i++;
             }
+            
             System.out.println("");
         }
     }
@@ -153,9 +148,11 @@ public class UserInterface {
                 highestAvg = this.comparePlayers.get(i).projectionAvg();
                 highestAvgPlayer = this.comparePlayers.get(i);
             }
+            
             System.out.println(this.comparePlayers.get(i));
             i++;
         }
+        
         System.out.println("");
         System.out.println(highestAvgPlayer.getNameCaps() + " has the highest average projection with " + highestAvg + " points.");
     }
