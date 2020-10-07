@@ -23,16 +23,22 @@ public class Player {
     }
     
     public String getName() {
+        return this.name.toLowerCase();
+    }
+    
+    public String getNameCaps() {
         return this.name;
     }
     
     public String getTeam() {
-        return this.team;
+        return this.team.toLowerCase();
     }
     
     public String getPos() {
-        return this.pos;
+        return this.pos.toLowerCase();
     }
+    
+    //Avgeraged projection for this player
     
     public double projectionAvg() {
         int i = 0;
