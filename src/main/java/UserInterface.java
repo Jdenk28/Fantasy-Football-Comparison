@@ -24,14 +24,14 @@ public class UserInterface {
         readFile("proj_yahoo");
 
         System.out.println("Welcome to the Fantasy Football Comparison Program!");
-        System.out.println("Input Players. Type \"End\" when all players have been input to receive comparison. Type \"Search\" at anytime for a list of players.");
+        System.out.println("Input Players. Type \"Stop\" when all players have been input to receive comparison. Type \"Search\" at anytime for a list of players.");
         System.out.println("");
         
         while (true) {
             System.out.print("Enter Player (Full name): ");
             String input = scan.nextLine().toLowerCase();
             
-            if (input.equals("end")) {
+            if (input.equals("stop")) {
                 break;
             }
 

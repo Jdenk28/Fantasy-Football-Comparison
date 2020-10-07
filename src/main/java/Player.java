@@ -51,7 +51,10 @@ public class Player {
             total++;
         }
         
-        return 1.0 * sum / total;
+        double avg = 1.0 * sum / total;
+        double roundedAvg = Math.round(avg * 100.0) / 100.0;
+        
+        return roundedAvg;
     }
     
     public String toString() {
