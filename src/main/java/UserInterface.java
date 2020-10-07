@@ -49,7 +49,7 @@ public class UserInterface {
             }
             
             if (notOnList.equals("notOnList")) {
-                System.out.println("This player doesn't have sufficient data for a comparison");
+                System.out.println("Invalid input. Try again.");
             }
         }
         
@@ -101,7 +101,7 @@ public class UserInterface {
     //Code for the search function
     
     public void search() {
-        System.out.print("Search by Position or Team: ");
+        System.out.print("Search by \"Position\" or \"Team\": ");
         String input = this.scan.nextLine().toLowerCase();
         
         if (input.equals("position")) {
@@ -119,7 +119,7 @@ public class UserInterface {
         }
         
         if(input.equals("team")) {
-            System.out.print("Which team? (PIT, PHI, KC, NE, etc): ");
+            System.out.print("Which team? (BAL, PHI, KC, NE, etc): ");
             String inputTeam = this.scan.nextLine().toLowerCase();
             System.out.println("");
             
